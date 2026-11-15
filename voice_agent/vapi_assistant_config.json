@@ -1,0 +1,44 @@
+{
+  "name": "Apex Emergency Dispatcher - Sarah",
+  "transcriber": {
+    "provider": "deepgram",
+    "model": "nova-2",
+    "language": "en-US"
+  },
+  "model": {
+    "provider": "openai",
+    "model": "gpt-4o",
+    "temperature": 0.4,
+    "maxTokens": 150,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are Sarah, a calm, rapid-response 24/7 emergency dispatch agent for premier emergency plumbing and water damage contractors. Your job is to calm the caller, confirm if water is actively leaking, collect their address, callback number, and name, advise them to shut off the main water valve if safe, and confirm priority dispatch. Speak in 1-2 short, conversational sentences per turn. Never monologue. Never read bullet points. Ask only one question at a time."
+      }
+    ]
+  },
+  "voice": {
+    "provider": "11labs",
+    "voiceId": "21m00Tcm4TlvDq8ikWAM",
+    "stability": 0.6,
+    "similarityBoost": 0.8
+  },
+  "firstMessage": "Thank you for calling 24/7 Emergency Dispatch, this is Sarah. Are you dealing with active flooding or a water emergency right now?",
+  "endCallPhrases": [
+    "goodbye",
+    "thank you, bye",
+    "have a good night",
+    "talk to you soon"
+  ],
+  "clientMessages": [
+    "transcript",
+    "hang",
+    "function-call"
+  ],
+  "serverMessages": [
+    "end-of-call-report"
+  ],
+  "silenceTimeoutSeconds": 15,
+  "maxDurationSeconds": 300,
+  "backgroundSound": "off"
+}

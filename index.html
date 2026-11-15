@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apex 24/7 AI Dispatch | Never Miss Another $5,000 Emergency Job</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen antialiased selection:bg-amber-500 selection:text-black">
+
+  <!-- TOP BAR BANNER -->
+  <div class="bg-gradient-to-r from-amber-600 to-amber-500 text-slate-950 text-xs font-bold py-2 text-center tracking-wide uppercase">
+    ⚡ Built Exclusively for 24/7 Emergency Plumbers, Restoration & HVAC Contractors
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav class="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between border-b border-slate-900">
+    <div class="flex items-center space-x-3">
+      <div class="w-9 h-9 rounded-xl bg-amber-500 flex items-center justify-center text-slate-950 font-black text-xl shadow-lg shadow-amber-500/20">
+        A
+      </div>
+      <div>
+        <span class="text-lg font-bold tracking-tight text-white">Apex<span class="text-amber-400">Dispatch</span></span>
+        <span class="text-[10px] ml-2 px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 font-mono">AI VOICE v2.4</span>
+      </div>
+    </div>
+    <div class="flex items-center space-x-4">
+      <a href="#calculator" class="text-sm font-medium text-slate-400 hover:text-white transition">ROI Calculator</a>
+      <a href="#demo" class="text-sm font-medium text-slate-400 hover:text-white transition">Live Demo</a>
+      <a href="#pricing" class="text-sm font-semibold bg-amber-500 hover:bg-amber-400 text-slate-950 px-4 py-2 rounded-lg transition shadow-md shadow-amber-500/10">
+        Get 7-Day Trial
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="max-w-5xl mx-auto px-6 pt-16 pb-20 text-center">
+    <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-xs text-amber-400 font-mono mb-6">
+      <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+      <span>Answers on the 1st ring • Zero hold times • Dispatches in real-time</span>
+    </div>
+
+    <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-tight sm:leading-none">
+      Never lose another <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400">$5,000 emergency job</span> to voicemail.
+    </h1>
+
+    <p class="mt-6 text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+      When a pipe bursts at 11:00 PM, panicked homeowners hang up on voicemail and call your competitor. 
+      <strong class="text-slate-200">Apex AI answers instantly</strong>, calms the customer, grabs their address, and texts your on-call crew.
+    </p>
+
+    <!-- LIVE DEMO PHONE CALLOUT -->
+    <div class="mt-10 p-6 bg-slate-900/80 border border-slate-800 rounded-2xl max-w-xl mx-auto shadow-2xl relative overflow-hidden backdrop-blur">
+      <div class="absolute -top-12 -right-12 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl"></div>
+      <p class="text-xs uppercase tracking-wider font-semibold text-slate-400 mb-2">Test the AI live on your phone right now</p>
+      <div class="text-3xl sm:text-4xl font-extrabold text-amber-400 mono tracking-wider my-2">
+        (800) 555-APEX
+      </div>
+      <p class="text-xs text-slate-400">
+        Pretend your basement is actively flooding. See how Sarah triages the emergency in 45 seconds.
+      </p>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE PHONE SIMULATOR & AUDIO DEMO -->
+  <section id="demo" class="max-w-5xl mx-auto px-6 py-12">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-12">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white">Experience an Emergency Dispatch Call</h2>
+        <p class="text-slate-400 text-sm mt-2">Click below to simulate an 11:30 PM burst pipe emergency call handled by Apex AI.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <!-- Interactive Call Console -->
+        <div class="bg-slate-950 rounded-xl p-6 border border-slate-800">
+          <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+            <div class="flex items-center space-x-3">
+              <div class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></div>
+              <span class="text-xs font-mono text-emerald-400 uppercase font-semibold">Active Dispatch Simulation</span>
+            </div>
+            <span class="text-xs font-mono text-slate-400" id="callDuration">00:00</span>
+          </div>
+
+          <div class="py-6 space-y-4 min-h-[220px]" id="transcriptBox">
+            <div class="text-xs text-slate-400 italic text-center pt-8">
+              Press "Start Simulated Call" to hear how Apex handles an emergency.
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+            <button id="startCallBtn" onclick="runSimulatedCall()" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-3 px-6 rounded-lg text-sm transition flex items-center justify-center space-x-2">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+              <span>Start Simulated Call</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Real-time SMS Dispatch Output -->
+        <div class="bg-slate-950 rounded-xl p-6 border border-slate-800">
+          <div class="text-xs uppercase font-mono tracking-wider text-slate-400 font-semibold mb-3 flex items-center space-x-2">
+            <span>📱 Real-Time SMS Alert to On-Call Tech</span>
+          </div>
+          
+          <div id="smsOutput" class="p-4 bg-slate-900 border border-slate-800 rounded-lg text-xs font-mono space-y-2 text-slate-400">
+            <p class="text-slate-400 italic">Waiting for incoming call dispatch...</p>
+          </div>
+
+          <div class="mt-6 space-y-2">
+            <div class="flex items-center text-xs text-slate-300">
+              <span class="text-emerald-400 mr-2">✓</span> Instant dispatch within 5 seconds of hang-up
+            </div>
+            <div class="flex items-center text-xs text-slate-300">
+              <span class="text-emerald-400 mr-2">✓</span> Full customer name, address & phone verified
+            </div>
+            <div class="flex items-center text-xs text-slate-300">
+              <span class="text-emerald-400 mr-2">✓</span> Audio recording & transcript archived
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOST REVENUE ROI CALCULATOR -->
+  <section id="calculator" class="max-w-4xl mx-auto px-6 py-16">
+    <div class="bg-gradient-to-b from-slate-900 to-slate-950 border border-amber-500/20 rounded-3xl p-8 sm:p-12 shadow-2xl">
+      <div class="text-center max-w-xl mx-auto mb-10">
+        <span class="text-xs font-mono uppercase tracking-wider text-amber-400 font-bold">Uncomfortable Math</span>
+        <h2 class="text-3xl font-extrabold text-white mt-2">How Much Revenue Are You Losing To Voicemail?</h2>
+        <p class="text-slate-400 text-sm mt-2">Adjust the sliders to see what after-hours missed calls are costing your company.</p>
+      </div>
+
+      <div class="space-y-8">
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <label class="text-sm font-semibold text-slate-200">Average Emergency Job Value</label>
+            <span class="text-amber-400 font-mono font-bold text-lg" id="jobValDisplay">$3,500</span>
+          </div>
+          <input type="range" min="1000" max="10000" step="250" value="3500" id="jobValueSlider" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-500">
+          <div class="flex justify-between text-[11px] text-slate-400 mt-1">
+            <span>$1,000 (Small repair)</span>
+            <span>$10,000 (Major flood restoration)</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <label class="text-sm font-semibold text-slate-200">Missed After-Hours Calls Per Week</label>
+            <span class="text-amber-400 font-mono font-bold text-lg" id="callsDisplay">3 calls / week</span>
+          </div>
+          <input type="range" min="1" max="15" step="1" value="3" id="callsSlider" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-500">
+          <div class="flex justify-between text-[11px] text-slate-400 mt-1">
+            <span>1 call</span>
+            <span>15 calls</span>
+          </div>
+        </div>
+
+        <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 flex flex-col sm:flex-row items-center justify-between text-center sm:text-left gap-4">
+          <div>
+            <div class="text-xs uppercase tracking-wider font-mono text-slate-400">Estimated Annual Revenue Leaked:</div>
+            <div class="text-4xl sm:text-5xl font-black text-rose-500 font-mono tracking-tight mt-1" id="totalLossDisplay">
+              $546,000 / yr
+            </div>
+            <div class="text-xs text-slate-400 mt-1">Assuming only 60% of callers would have booked.</div>
+          </div>
+          <a href="#pricing" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-3.5 rounded-xl text-sm transition shadow-lg shadow-amber-500/20 whitespace-nowrap">
+            Plug The Leak Today →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING / 7-DAY RISK-FREE OFFER -->
+  <section id="pricing" class="max-w-4xl mx-auto px-6 py-16 text-center">
+    <div class="max-w-xl mx-auto bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-10 shadow-2xl relative">
+      <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-slate-950 text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+        Turnkey Implementation
+      </div>
+
+      <h3 class="text-2xl font-bold text-white mt-2">Apex 24/7 Dispatch Setup</h3>
+      <div class="text-5xl font-extrabold text-white my-4">$500 <span class="text-sm font-normal text-slate-400">one-time setup</span></div>
+      
+      <p class="text-sm text-slate-300 mb-6">
+        Zero monthly software lock-in. We build, program, and connect your custom voice bot directly to your shop's phone line in 24 hours.
+      </p>
+
+      <div class="space-y-3 text-left border-t border-b border-slate-800 py-6 mb-8 text-sm text-slate-300">
+        <div class="flex items-center"><span class="text-amber-400 mr-3">✔</span> Dedicated high-speed AI voice line (sub-second response)</div>
+        <div class="flex items-center"><span class="text-amber-400 mr-3">✔</span> Customized to your service area, pricing & technician rules</div>
+        <div class="flex items-center"><span class="text-amber-400 mr-3">✔</span> Instant SMS & email dispatch with customer address & notes</div>
+        <div class="flex items-center"><span class="text-amber-400 mr-3">✔</span> <strong>7-Day Risk-Free Guarantee:</strong> If it doesn't catch an emergency job, you pay $0</div>
+      </div>
+
+      <button onclick="alert('Ready to activate your line? Simply contact us or reply to our email to start your 7-day test!')" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-4 rounded-xl text-base transition shadow-lg shadow-amber-500/25">
+        Start 7-Day Risk-Free Test
+      </button>
+    </div>
+  </section>
+
+  <footer class="border-t border-slate-900 py-8 text-center text-xs text-slate-400 font-mono">
+    Apex Dispatch AI © 2026 • Automated Emergency Ingestion Systems
+  </footer>
+
+  <script>
+    // Calculator logic
+    const jobSlider = document.getElementById('jobValueSlider');
+    const callsSlider = document.getElementById('callsSlider');
+    const jobValDisplay = document.getElementById('jobValDisplay');
+    const callsDisplay = document.getElementById('callsDisplay');
+    const totalLossDisplay = document.getElementById('totalLossDisplay');
+
+    function updateCalc() {
+      const jobVal = parseInt(jobSlider.value);
+      const calls = parseInt(callsSlider.value);
+      jobValDisplay.innerText = '$' + jobVal.toLocaleString();
+      callsDisplay.innerText = calls + (calls === 1 ? ' call / week' : ' calls / week');
+      
+      // Annual loss = calls * 52 * jobVal * 0.60 booking conversion
+      const annualLoss = Math.round(calls * 52 * jobVal * 0.60);
+      totalLossDisplay.innerText = '$' + annualLoss.toLocaleString() + ' / yr';
+    }
+
+    jobSlider.addEventListener('input', updateCalc);
+    callsSlider.addEventListener('input', updateCalc);
+    updateCalc();
+
+    // Call Simulator
+    function runSimulatedCall() {
+      const transcript = document.getElementById('transcriptBox');
+      const sms = document.getElementById('smsOutput');
+      const btn = document.getElementById('startCallBtn');
+      const timer = document.getElementById('callDuration');
+
+      btn.disabled = true;
+      btn.classList.add('opacity-50');
+      transcript.innerHTML = '';
+      sms.innerHTML = '<span class="text-amber-400">Call connected... Listening...</span>';
+
+      const script = [
+        { speaker: 'Homeowner', text: "Help! A pipe just burst under my sink and water is spraying everywhere!", delay: 800 },
+        { speaker: 'Apex AI', text: "Don't panic! First, are you able to safely shut off the main water valve right now?", delay: 2200 },
+        { speaker: 'Homeowner', text: "Yes, I just turned the valve off, but there's an inch of water across my kitchen floor!", delay: 4200 },
+        { speaker: 'Apex AI', text: "Great job shutting off the valve. What is your full street address and city so I can dispatch our on-call crew?", delay: 6500 },
+        { speaker: 'Homeowner', text: "I'm at 742 Evergreen Terrace in Northwood.", delay: 8800 },
+        { speaker: 'Apex AI', text: "Got it, 742 Evergreen Terrace. And what is your best callback phone number and first name?", delay: 11000 },
+        { speaker: 'Homeowner', text: "It's John, my number is 555-0199.", delay: 13200 },
+        { speaker: 'Apex AI', text: "Thank you, John. Priority dispatch is confirmed. Our lead tech Mike is on call and will phone you in 5 minutes with his exact ETA. Help is on the way!", delay: 15500 }
+      ];
+
+      let sec = 0;
+      const interval = setInterval(() => {
+        sec++;
+        const m = String(Math.floor(sec/60)).padStart(2, '0');
+        const s = String(sec % 60).padStart(2, '0');
+        timer.innerText = `${m}:${s}`;
+      }, 1000);
+
+      script.forEach(item => {
+        setTimeout(() => {
+          const bubble = document.createElement('div');
+          bubble.className = item.speaker === 'Apex AI' 
+            ? 'p-2.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-xs text-amber-200' 
+            : 'p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300';
+          bubble.innerHTML = `<strong>${item.speaker}:</strong> ${item.text}`;
+          transcript.appendChild(bubble);
+          transcript.scrollTop = transcript.scrollHeight;
+        }, item.delay);
+      });
+
+      setTimeout(() => {
+        clearInterval(interval);
+        btn.disabled = false;
+        btn.classList.remove('opacity-50');
+        sms.innerHTML = `
+          <div class="text-emerald-400 font-bold mb-1">🚨 NEW EMERGENCY DISPATCH:</div>
+          <div><strong>Customer:</strong> John</div>
+          <div><strong>Phone:</strong> (555) 0199</div>
+          <div><strong>Address:</strong> 742 Evergreen Terrace, Northwood</div>
+          <div><strong>Issue:</strong> Burst pipe under kitchen sink (Water valve shut off, standing water)</div>
+          <div><strong>Status:</strong> Awaiting Lead Tech Call</div>
+        `;
+      }, 18000);
+    }
+  </script>
+</body>
+</html>
