@@ -291,7 +291,68 @@
     callsSlider.addEventListener('input', updateCalc);
     updateCalc();
 
-    // Call Simulator
+    // Call Simulator with REAL Spoken Audio & Phone Sound Effects
+    let audioCtx = null;
+
+    function playPhoneRing() {
+      try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) return;
+        if (!audioCtx) audioCtx = new AudioContext();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+
+        const osc1 = audioCtx.createOscillator();
+        const osc2 = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+
+        osc1.frequency.value = 440; // US standard ring tone
+        osc2.frequency.value = 480;
+
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.6);
+
+        osc1.connect(gain);
+        osc2.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc1.start();
+        osc2.start();
+        osc1.stop(audioCtx.currentTime + 1.6);
+        osc2.stop(audioCtx.currentTime + 1.6);
+      } catch (e) {
+        console.log('AudioContext not allowed without gesture', e);
+      }
+    }
+
+    function speakText(text, isDispatcher, callback) {
+      if (!('speechSynthesis' in window)) {
+        if (callback) callback();
+        return;
+      }
+
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = isDispatcher ? 1.05 : 1.15;
+      utterance.pitch = isDispatcher ? 0.95 : 1.1;
+
+      // Select voices if available
+      const voices = window.speechSynthesis.getVoices();
+      if (voices.length > 0) {
+        if (isDispatcher) {
+          const maleVoice = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Male') || v.name.includes('David') || v.name.includes('Alex') || v.name.includes('Daniel')));
+          if (maleVoice) utterance.voice = maleVoice;
+        } else {
+          const femVoice = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Female') || v.name.includes('Samantha') || v.name.includes('Victoria') || v.name.includes('Karen')));
+          if (femVoice) utterance.voice = femVoice;
+        }
+      }
+
+      utterance.onend = () => { if (callback) callback(); };
+      utterance.onerror = () => { if (callback) callback(); };
+
+      window.speechSynthesis.speak(utterance);
+    }
+
     function runSimulatedCall() {
       const transcript = document.getElementById('transcriptBox');
       const sms = document.getElementById('smsOutput');
@@ -301,15 +362,18 @@
       btn.disabled = true;
       btn.classList.add('opacity-50');
       transcript.innerHTML = '';
-      sms.innerHTML = '<span class="text-amber-400">Incoming emergency call connected...</span>';
+      sms.innerHTML = '<span class="text-amber-400 font-mono">Dialing... Connecting to 24/7 on-call dispatcher...</span>';
+
+      playPhoneRing();
 
       const script = [
-        { speaker: 'Customer', text: "Help! Our heating unit just died and temperatures outside are below freezing!", delay: 800 },
-        { speaker: 'Apex Dispatch', text: "Oh no, I'm so sorry! Don't worry, we're going to get an emergency technician out to you right away. What is your full address?", delay: 2400 },
-        { speaker: 'Customer', text: "We're at 812 Westheimer Road, Houston.", delay: 4800 },
-        { speaker: 'Apex Dispatch', text: "Got it, 812 Westheimer Road. And what is your best callback phone number and first name?", delay: 7200 },
-        { speaker: 'Customer', text: "It's David, number is 713-555-0182.", delay: 9600 },
-        { speaker: 'Apex Dispatch', text: "Thank you, David. Priority dispatch is logged. Our on-call HVAC tech is being notified now and will phone you in 5 to 10 minutes with his exact ETA. Stay warm, help is on the way!", delay: 12400 }
+        { speaker: 'Apex Dispatch', text: "Thank you for calling 24/7 Emergency Dispatch, this is Harry. Are you dealing with active flooding or a heating outage right now?" },
+        { speaker: 'Customer', text: "Help! Our heating unit just died and temperatures outside are freezing!" },
+        { speaker: 'Apex Dispatch', text: "Oh no, I'm so sorry! Don't worry at all, we're going to get an emergency technician dispatched right away. What is your full street address?" },
+        { speaker: 'Customer', text: "We're at 812 Westheimer Road, Houston." },
+        { speaker: 'Apex Dispatch', text: "Got it, 812 Westheimer Road. And what is your best callback phone number and first name?" },
+        { speaker: 'Customer', text: "It's David, number is 713-555-0182." },
+        { speaker: 'Apex Dispatch', text: "Thank you, David. Priority dispatch is logged. Our on-call tech Mike is being alerted right now and will phone you in 5 minutes with his ETA. Stay warm, help is on the way!" }
       ];
 
       let sec = 0;
@@ -320,31 +384,43 @@
         timer.innerText = `${m}:${s}`;
       }, 1000);
 
-      script.forEach(item => {
-        setTimeout(() => {
-          const bubble = document.createElement('div');
-          bubble.className = item.speaker === 'Apex Dispatch' 
-            ? 'p-2.5 rounded bg-amber-500/10 border border-amber-500/20 text-xs text-amber-200' 
-            : 'p-2.5 rounded bg-slate-900 border border-slate-800 text-xs text-slate-300';
-          bubble.innerHTML = `<strong>${item.speaker}:</strong> ${item.text}`;
-          transcript.appendChild(bubble);
-          transcript.scrollTop = transcript.scrollHeight;
-        }, item.delay);
-      });
+      let stepIndex = 0;
 
-      setTimeout(() => {
-        clearInterval(interval);
-        btn.disabled = false;
-        btn.classList.remove('opacity-50');
-        sms.innerHTML = `
-          <div class="text-emerald-400 font-bold mb-1">🚨 EMERGENCY DISPATCH ALERT:</div>
-          <div><strong>Customer:</strong> David</div>
-          <div><strong>Phone:</strong> (713) 555-0182</div>
-          <div><strong>Address:</strong> 812 Westheimer Rd, Houston</div>
-          <div><strong>Emergency:</strong> Furnace / Heat pump outage (Freezing weather)</div>
-          <div><strong>Status:</strong> Awaiting On-Call Tech Call</div>
-        `;
-      }, 15000);
+      function playNextStep() {
+        if (stepIndex >= script.length) {
+          clearInterval(interval);
+          btn.disabled = false;
+          btn.classList.remove('opacity-50');
+          sms.innerHTML = `
+            <div class="text-emerald-400 font-bold mb-1">🚨 EMERGENCY DISPATCH ALERT:</div>
+            <div><strong>Customer:</strong> David</div>
+            <div><strong>Phone:</strong> (713) 555-0182</div>
+            <div><strong>Address:</strong> 812 Westheimer Rd, Houston</div>
+            <div><strong>Emergency:</strong> Furnace / Heat pump outage (Freezing weather)</div>
+            <div><strong>Status:</strong> Awaiting On-Call Tech Call</div>
+          `;
+          return;
+        }
+
+        const item = script[stepIndex];
+        const isDispatcher = (item.speaker === 'Apex Dispatch');
+
+        const bubble = document.createElement('div');
+        bubble.className = isDispatcher 
+          ? 'p-2.5 rounded bg-amber-500/10 border border-amber-500/20 text-xs text-amber-200' 
+          : 'p-2.5 rounded bg-slate-900 border border-slate-800 text-xs text-slate-300';
+        bubble.innerHTML = `<strong>${item.speaker}:</strong> ${item.text}`;
+        transcript.appendChild(bubble);
+        transcript.scrollTop = transcript.scrollHeight;
+
+        speakText(item.text, isDispatcher, () => {
+          stepIndex++;
+          setTimeout(playNextStep, 600);
+        });
+      }
+
+      // Start after initial ring
+      setTimeout(playNextStep, 1800);
     }
   </script>
 </body>
