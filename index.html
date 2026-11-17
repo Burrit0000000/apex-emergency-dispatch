@@ -11,20 +11,29 @@
   <style>
     body { font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; }
     .mono { font-family: 'JetBrains Mono', monospace; }
+    @keyframes pulse-ring {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.05); opacity: 0.3; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+    .pulse-ring { animation: pulse-ring 2.5s infinite ease-in-out; }
   </style>
 </head>
-<body class="bg-[#090d16] text-slate-100 min-h-screen antialiased selection:bg-amber-500 selection:text-black">
+<body class="bg-[#070a12] text-slate-100 min-h-screen antialiased selection:bg-amber-500 selection:text-black">
 
   <!-- TOP BAR BANNER -->
-  <div class="bg-slate-900 border-b border-slate-800 text-slate-300 text-xs py-2.5 px-4 text-center font-medium">
-    <span class="text-amber-400 font-semibold mr-1.5">● Live Telephony Network:</span> 
-    Serving Commercial Facilities & Residential Plumbing, HVAC & Disaster Restoration Contractors Across North America
+  <div class="bg-gradient-to-r from-slate-900 via-amber-950/30 to-slate-900 border-b border-slate-800 text-slate-300 text-xs py-2.5 px-4 text-center font-medium">
+    <span class="inline-flex items-center text-amber-400 font-bold mr-2">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping mr-1.5"></span>
+      24/7 Live Telephony Network:
+    </span> 
+    Serving Commercial Facilities & Residential Plumbing, HVAC & Disaster Restoration Across North America
   </div>
 
   <!-- NAVIGATION -->
   <nav class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between border-b border-slate-800/80">
     <div class="flex items-center space-x-3">
-      <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center text-slate-950 font-black text-xl shadow-md">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-950 font-black text-xl shadow-lg shadow-amber-500/10">
         A
       </div>
       <div>
@@ -32,98 +41,227 @@
       </div>
     </div>
     <div class="flex items-center space-x-6">
-      <a href="#how-it-works" class="text-sm font-medium text-slate-300 hover:text-white transition">How It Works</a>
+      <a href="#how-it-works" class="text-sm font-medium text-slate-300 hover:text-white transition">4-Step Process</a>
       <a href="#calculator" class="text-sm font-medium text-slate-300 hover:text-white transition">ROI Calculator</a>
       <a href="#demo" class="text-sm font-medium text-slate-300 hover:text-white transition">Live Demo</a>
-      <a href="https://buy.stripe.com/8x26oH69LaEAajGe6F2cg01" class="text-sm font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 px-5 py-2.5 rounded-lg transition shadow-sm">
+      <a href="https://buy.stripe.com/8x26oH69LaEAajGe6F2cg01" class="text-sm font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 px-5 py-2.5 rounded-xl transition shadow-lg shadow-amber-500/20">
         Activate 24/7 Line
       </a>
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
-  <section class="max-w-5xl mx-auto px-6 pt-16 pb-16 text-center">
-    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-xs text-slate-300 font-medium mb-6">
-      <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-      <span>Zero Hold Times • Instant SMS Dispatch • Compatible With Any Business Phone System</span>
-    </div>
+  <!-- HERO SECTION WITH LIVE VISUAL MOCKUP -->
+  <section class="max-w-6xl mx-auto px-6 pt-16 pb-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left Column: Copy -->
+      <div class="lg:col-span-7 text-left space-y-6">
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-xs text-slate-300 font-medium">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span>Zero Hold Times • Instant SMS Dispatch • Works With Any Carrier</span>
+        </div>
 
-    <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-tight sm:leading-none">
-      Never lose another <span class="text-amber-400">$5,000 emergency job</span> to voicemail.
-    </h1>
+        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+          Never lose another <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400">$5,000 emergency job</span> to voicemail.
+        </h1>
 
-    <p class="mt-6 text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
-      When a main line bursts or a commercial rooftop HVAC unit fails at midnight, facility managers and homeowners won't leave voicemails—they call the first contractor who picks up. 
-      <strong class="text-white">Apex Dispatch answers on the first ring</strong>, calms the customer, verifies their address, and routes priority dispatches directly to your on-call crew.
-    </p>
+        <p class="text-lg text-slate-300 leading-relaxed max-w-xl">
+          When a main water line bursts or a commercial rooftop HVAC fails at midnight, facility managers and homeowners won't leave a message—they call the first contractor who picks up.
+        </p>
 
-    <!-- LIVE DEMO NUMBER BOX -->
-    <div class="mt-10 p-6 bg-slate-900 border border-slate-800 rounded-xl max-w-lg mx-auto shadow-xl">
-      <p class="text-xs uppercase tracking-wider font-semibold text-slate-400 mb-1">Test the live voice line right now from your phone</p>
-      <div class="text-3xl sm:text-4xl font-bold text-amber-400 mono tracking-wider my-2">
-        (346) 398-7218
+        <p class="text-sm text-slate-400 leading-relaxed">
+          <strong class="text-white">Apex Dispatch answers on the first ring</strong>, calms the customer, verifies their address, and immediately shoots the dispatch alert straight to your on-call technician's cell phone.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+          <a href="https://buy.stripe.com/8x26oH69LaEAajGe6F2cg01" class="text-center font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 px-8 py-4 rounded-xl text-base transition shadow-xl shadow-amber-500/25">
+            Activate 24/7 Dispatch Line →
+          </a>
+          <a href="#demo" class="text-center font-semibold bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 px-6 py-4 rounded-xl text-base transition">
+            Hear Live Demo
+          </a>
+        </div>
+
+        <!-- Metric Badges -->
+        <div class="pt-6 border-t border-slate-800/80 grid grid-cols-3 gap-4">
+          <div>
+            <div class="text-2xl font-bold text-white mono">1.8s</div>
+            <div class="text-[11px] text-slate-400">Average Pickup Time</div>
+          </div>
+          <div>
+            <div class="text-2xl font-bold text-emerald-400 mono">100%</div>
+            <div class="text-[11px] text-slate-400">Calls Captured</div>
+          </div>
+          <div>
+            <div class="text-2xl font-bold text-amber-400 mono">$4,500+</div>
+            <div class="text-[11px] text-slate-400">Avg Job Captured</div>
+          </div>
+        </div>
       </div>
-      <p class="text-xs text-slate-400">
-        Dial from your cell. Pretend your basement is flooding or your A/C unit is dead. See how the dispatcher handles you in 45 seconds.
-      </p>
-    </div>
 
-    <!-- TRUSTED TRADES BADGES -->
-    <div class="mt-12 pt-8 border-t border-slate-800/60 max-w-3xl mx-auto">
-      <p class="text-xs uppercase tracking-wider font-semibold text-slate-400 mb-4">Engineered Specifically For High-Ticket Emergency Trades</p>
-      <div class="grid grid-cols-3 gap-4 text-center text-xs font-semibold text-slate-300">
-        <div class="p-3 bg-slate-900/60 rounded-lg border border-slate-800">🏢 Commercial Facilities & Multi-Family</div>
-        <div class="p-3 bg-slate-900/60 rounded-lg border border-slate-800">🚰 Commercial & Residential Plumbing</div>
-        <div class="p-3 bg-slate-900/60 rounded-lg border border-slate-800">❄️ 24/7 Commercial & Residential HVAC</div>
+      <!-- Right Column: Visual iPhone / SMS Dispatch Mockup -->
+      <div class="lg:col-span-5 relative">
+        <div class="absolute -inset-1 bg-gradient-to-r from-amber-500/20 to-orange-500/20 rounded-3xl blur-2xl"></div>
+        
+        <div class="relative bg-slate-900/90 border border-slate-800 rounded-3xl p-6 shadow-2xl backdrop-blur-sm space-y-5">
+          
+          <!-- Mock Phone Header -->
+          <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+            <div class="flex items-center space-x-2">
+              <div class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></div>
+              <span class="text-xs font-mono uppercase tracking-wider text-slate-300 font-semibold">Incoming Emergency Call</span>
+            </div>
+            <span class="text-xs font-mono text-emerald-400">Live • 00:48</span>
+          </div>
+
+          <!-- Active Dispatcher Voice Bubble -->
+          <div class="p-4 bg-slate-950 rounded-2xl border border-amber-500/30 space-y-2">
+            <div class="flex items-center justify-between text-xs text-amber-400 font-semibold">
+              <span class="flex items-center"><span class="mr-1.5">🎙️</span> Dispatcher Emma</span>
+              <span class="text-[10px] text-slate-400">Houston Line (346) 398-7218</span>
+            </div>
+            <p class="text-xs text-slate-200 italic leading-relaxed">
+              "Don't worry, David. Priority emergency dispatch is logged for 812 Westheimer Rd. Our lead on-call technician Mike is being alerted right now and will call you in 5 minutes with his ETA."
+            </p>
+          </div>
+
+          <!-- Arrow Indicator -->
+          <div class="flex items-center justify-center space-x-2 text-xs font-mono text-slate-400">
+            <span>⚡ Automated routing in 3.2 seconds</span>
+            <span>↓</span>
+          </div>
+
+          <!-- Realistic iMessage / SMS Notification Card to Mike -->
+          <div class="p-4 bg-gradient-to-br from-slate-950 to-slate-900 rounded-2xl border border-emerald-500/40 shadow-xl space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-[11px] font-mono font-bold text-emerald-400 flex items-center">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 mr-1.5"></span>
+                SMS DISPATCH TO ON-CALL TECH (MIKE)
+              </span>
+              <span class="text-[10px] text-slate-400 font-mono">11:42 PM</span>
+            </div>
+            
+            <div class="p-3 bg-slate-900/90 rounded-xl border border-slate-800 text-xs font-mono space-y-1 text-slate-200">
+              <div class="text-rose-400 font-bold">🚨 NEW EMERGENCY JOB DISPATCH:</div>
+              <div><strong>Customer:</strong> David Sterling</div>
+              <div><strong>Phone:</strong> (713) 555-0182</div>
+              <div><strong>Address:</strong> 812 Westheimer Rd, Houston TX</div>
+              <div><strong>Issue:</strong> Furnace / Heat pump outage in freezing weather</div>
+              <div><strong>Status:</strong> Priority Callback Needed</div>
+            </div>
+          </div>
+
+          <!-- Live Dial Callout -->
+          <div class="pt-2 text-center">
+            <p class="text-xs text-slate-400 mb-1">Test it live right now from your phone:</p>
+            <div class="text-xl font-bold text-amber-400 mono tracking-wider">
+              (346) 398-7218
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TRADES SERVED BADGES -->
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+      <div class="p-4 bg-slate-900/80 rounded-xl border border-slate-800 flex items-center justify-center space-x-3">
+        <span class="text-2xl">🏢</span>
+        <div class="text-left">
+          <div class="text-sm font-bold text-white">Commercial Facilities</div>
+          <div class="text-xs text-slate-400">Restaurants, Offices & Multi-Family</div>
+        </div>
+      </div>
+      <div class="p-4 bg-slate-900/80 rounded-xl border border-slate-800 flex items-center justify-center space-x-3">
+        <span class="text-2xl">🚰</span>
+        <div class="text-left">
+          <div class="text-sm font-bold text-white">Emergency Plumbing</div>
+          <div class="text-xs text-slate-400">Burst Pipes, Drains & Water Mitigation</div>
+        </div>
+      </div>
+      <div class="p-4 bg-slate-900/80 rounded-xl border border-slate-800 flex items-center justify-center space-x-3">
+        <span class="text-2xl">❄️</span>
+        <div class="text-left">
+          <div class="text-sm font-bold text-white">24/7 HVAC Services</div>
+          <div class="text-xs text-slate-400">Heating Outages & Emergency A/C Failure</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- HOW IT WORKS (NO COMPLICATED TECH) -->
-  <section id="how-it-works" class="max-w-5xl mx-auto px-6 py-12 border-t border-slate-800/80">
-    <div class="text-center max-w-2xl mx-auto mb-12">
-      <h2 class="text-2xl sm:text-3xl font-bold text-white">How It Works (Zero Changes To Your Number)</h2>
-      <p class="text-slate-400 text-sm mt-2">You don't need new software or hardware. It integrates seamlessly with your existing shop phone line in under 24 hours.</p>
+  <!-- THE 4-STEP TURNKEY PROCESS (HOW IT WORKS) -->
+  <section id="how-it-works" class="max-w-6xl mx-auto px-6 py-16 border-t border-slate-800/80">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <span class="text-xs font-mono uppercase tracking-wider text-amber-400 font-bold">Turnkey Onboarding</span>
+      <h2 class="text-3xl font-extrabold text-white mt-2">The 4-Step Process: From Signup to Live in 24 Hours</h2>
+      <p class="text-slate-400 text-sm mt-2">No complicated software. No staff training. We handle the entire build for you.</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="p-6 bg-slate-900 border border-slate-800 rounded-xl">
-        <div class="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 font-bold flex items-center justify-center mb-4">1</div>
-        <h3 class="text-base font-bold text-white mb-2">Customer Calls Your Line</h3>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+      
+      <!-- Step 1 -->
+      <div class="p-6 bg-slate-900/80 border border-slate-800 rounded-2xl relative">
+        <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 font-bold text-lg flex items-center justify-center mb-4">
+          1
+        </div>
+        <h3 class="text-base font-bold text-white mb-2">30-Second Activation</h3>
         <p class="text-xs text-slate-400 leading-relaxed">
-          Homeowners call your regular Google Maps or website number. After hours (or when lines are busy), your carrier forwards calls automatically to your dedicated Apex line.
+          At checkout, simply provide your company name and the mobile numbers for your on-call technicians.
         </p>
       </div>
 
-      <div class="p-6 bg-slate-900 border border-slate-800 rounded-xl">
-        <div class="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 font-bold flex items-center justify-center mb-4">2</div>
-        <h3 class="text-base font-bold text-white mb-2">Trained Dispatcher Answers</h3>
+      <!-- Step 2 -->
+      <div class="p-6 bg-slate-900/80 border border-slate-800 rounded-2xl relative">
+        <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 font-bold text-lg flex items-center justify-center mb-4">
+          2
+        </div>
+        <h3 class="text-base font-bold text-white mb-2">Dedicated Line Deployed</h3>
         <p class="text-xs text-slate-400 leading-relaxed">
-          Our voice agent greets them warmly in your company name, calms them down, advises safety (shutting off water or turning off thermostat), and verifies address and callback info.
+          We provision your dedicated high-speed line and custom-train Emma to your company parameters within 24 hours.
         </p>
       </div>
 
-      <div class="p-6 bg-slate-900 border border-slate-800 rounded-xl">
-        <div class="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 font-bold flex items-center justify-center mb-4">3</div>
-        <h3 class="text-base font-bold text-white mb-2">Instant Dispatch to Your Cell</h3>
+      <!-- Step 3 -->
+      <div class="p-6 bg-slate-900/80 border border-slate-800 rounded-2xl relative">
+        <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 font-bold text-lg flex items-center justify-center mb-4">
+          3
+        </div>
+        <h3 class="text-base font-bold text-white mb-2">Simple Call Forwarding</h3>
         <p class="text-xs text-slate-400 leading-relaxed">
-          Within 5 seconds of hanging up, your on-call technician receives a structured text and email alert with the full emergency details and customer phone number ready to call.
+          Keep your existing phone number. Simply set your carrier to conditionally forward after-hours calls to your new Apex line.
         </p>
       </div>
+
+      <!-- Step 4 -->
+      <div class="p-6 bg-slate-900/80 border border-slate-800 rounded-2xl relative">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 font-bold text-lg flex items-center justify-center mb-4">
+          4
+        </div>
+        <h3 class="text-base font-bold text-white mb-2">Instant Midnight Alerts</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Emma answers in 2 seconds, gathers customer details, and texts your on-call crew immediately so you win the job.
+        </p>
+      </div>
+
     </div>
   </section>
 
   <!-- INTERACTIVE PHONE SIMULATOR -->
   <section id="demo" class="max-w-5xl mx-auto px-6 py-12">
-    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-10">
-      <div class="text-center max-w-2xl mx-auto mb-8">
-        <h2 class="text-2xl sm:text-3xl font-bold text-white">Interactive Call Simulator</h2>
-        <p class="text-slate-400 text-sm mt-1">See how Apex handles an 11:30 PM burst pipe or heating outage.</p>
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="text-xs font-mono uppercase tracking-wider text-amber-400 font-bold">Interactive Voice Engine</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Experience an Emergency Dispatch Call</h2>
+        <p class="text-slate-400 text-sm mt-1">Click below to hear Emma handle a midnight heating outage in real-time through your speakers.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <!-- Interactive Call Console -->
-        <div class="bg-[#090d16] rounded-xl p-6 border border-slate-800">
+        <div class="bg-[#070a12] rounded-2xl p-6 border border-slate-800 shadow-inner">
           <div class="flex items-center justify-between pb-4 border-b border-slate-800">
             <div class="flex items-center space-x-2.5">
               <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
@@ -132,33 +270,34 @@
             <span class="text-xs font-mono text-slate-400" id="callDuration">00:00</span>
           </div>
 
-          <div class="py-6 space-y-3 min-h-[200px]" id="transcriptBox">
+          <div class="py-6 space-y-3 min-h-[220px]" id="transcriptBox">
             <div class="text-xs text-slate-400 italic text-center pt-8">
-              Press "Start Simulated Call" to preview call flow.
+              Press "Start Simulated Call" to hear ringback and real spoken voice flow.
             </div>
           </div>
 
           <div class="pt-4 border-t border-slate-800">
-            <button id="startCallBtn" onclick="runSimulatedCall()" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-3 px-6 rounded-lg text-sm transition flex items-center justify-center space-x-2">
+            <button id="startCallBtn" onclick="runSimulatedCall()" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-3.5 px-6 rounded-xl text-sm transition flex items-center justify-center space-x-2 shadow-lg shadow-emerald-500/20">
               <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
-              <span>Start Simulated Call</span>
+              <span>Start Simulated Call (With Audio)</span>
             </button>
           </div>
         </div>
 
         <!-- Real-time SMS Dispatch Output -->
-        <div class="bg-[#090d16] rounded-xl p-6 border border-slate-800">
-          <div class="text-xs uppercase font-mono tracking-wider text-slate-400 font-semibold mb-3">
-            📱 Real-Time Alert to On-Call Technician
+        <div class="bg-[#070a12] rounded-2xl p-6 border border-slate-800 shadow-inner">
+          <div class="text-xs uppercase font-mono tracking-wider text-slate-400 font-semibold mb-3 flex items-center justify-between">
+            <span>📱 Real-Time Alert to On-Call Tech</span>
+            <span class="text-[10px] text-emerald-400 font-mono">Instant Push</span>
           </div>
           
-          <div id="smsOutput" class="p-4 bg-slate-900 border border-slate-800 rounded-lg text-xs font-mono space-y-1.5 text-slate-400 min-h-[140px]">
-            <p class="text-slate-400 italic pt-6 text-center">Waiting for call to complete...</p>
+          <div id="smsOutput" class="p-4 bg-slate-900 border border-slate-800 rounded-xl text-xs font-mono space-y-1.5 text-slate-400 min-h-[160px]">
+            <p class="text-slate-400 italic pt-10 text-center">Waiting for call to complete...</p>
           </div>
 
           <div class="mt-5 space-y-2 text-xs text-slate-300">
-            <div class="flex items-center"><span class="text-emerald-400 mr-2">✓</span> Sent to technician within 5 seconds</div>
-            <div class="flex items-center"><span class="text-emerald-400 mr-2">✓</span> Full customer address, issue & callback number verified</div>
+            <div class="flex items-center"><span class="text-emerald-400 mr-2">✓</span> Sent to technician within 5 seconds of hang-up</div>
+            <div class="flex items-center"><span class="text-emerald-400 mr-2">✓</span> Full customer address, issue & callback verified</div>
             <div class="flex items-center"><span class="text-emerald-400 mr-2">✓</span> Audio recording and transcript archived for liability</div>
           </div>
         </div>
@@ -167,40 +306,40 @@
   </section>
 
   <!-- LOST REVENUE ROI CALCULATOR -->
-  <section id="calculator" class="max-w-4xl mx-auto px-6 py-12">
-    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-10 shadow-xl">
-      <div class="text-center max-w-xl mx-auto mb-8">
+  <section id="calculator" class="max-w-4xl mx-auto px-6 py-14">
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl">
+      <div class="text-center max-w-xl mx-auto mb-10">
         <span class="text-xs font-mono uppercase tracking-wider text-amber-400 font-bold">Uncomfortable Math</span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">What Are After-Hours Missed Calls Costing You?</h2>
+        <h2 class="text-3xl font-extrabold text-white mt-1">What Are After-Hours Missed Calls Costing You?</h2>
         <p class="text-slate-400 text-sm mt-1">Adjust the sliders to calculate your company's estimated annual revenue leak.</p>
       </div>
 
-      <div class="space-y-6">
+      <div class="space-y-8">
         <div>
-          <div class="flex justify-between items-center mb-1.5">
+          <div class="flex justify-between items-center mb-2">
             <label class="text-sm font-semibold text-slate-200">Average Emergency Job Value (Commercial & Residential)</label>
             <span class="text-amber-400 font-mono font-bold text-lg" id="jobValDisplay">$4,500</span>
           </div>
-          <input type="range" min="1500" max="12000" step="250" value="4500" id="jobValueSlider" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-500">
+          <input type="range" min="1500" max="25000" step="500" value="4500" id="jobValueSlider" class="w-full h-2.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-500">
           <div class="flex justify-between text-[11px] text-slate-400 mt-1">
-            <span>$1,500 (Residential repair)</span>
+            <span>$1,500 (Small residential repair)</span>
             <span>$25,000+ (Commercial flood / Multi-unit HVAC)</span>
           </div>
         </div>
 
         <div>
-          <div class="flex justify-between items-center mb-1.5">
+          <div class="flex justify-between items-center mb-2">
             <label class="text-sm font-semibold text-slate-200">Missed After-Hours & Weekend Calls Per Week</label>
             <span class="text-amber-400 font-mono font-bold text-lg" id="callsDisplay">3 calls / week</span>
           </div>
-          <input type="range" min="1" max="15" step="1" value="3" id="callsSlider" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-500">
+          <input type="range" min="1" max="15" step="1" value="3" id="callsSlider" class="w-full h-2.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-500">
           <div class="flex justify-between text-[11px] text-slate-400 mt-1">
-            <span>1 call</span>
-            <span>15 calls</span>
+            <span>1 call / wk</span>
+            <span>15 calls / wk</span>
           </div>
         </div>
 
-        <div class="p-6 bg-[#090d16] rounded-xl border border-slate-800 flex flex-col sm:flex-row items-center justify-between text-center sm:text-left gap-4">
+        <div class="p-6 bg-[#070a12] rounded-2xl border border-slate-800 flex flex-col sm:flex-row items-center justify-between text-center sm:text-left gap-4">
           <div>
             <div class="text-xs uppercase tracking-wider font-mono text-slate-400">Estimated Annual Revenue Leaked To Competitors:</div>
             <div class="text-3xl sm:text-4xl font-extrabold text-rose-500 font-mono tracking-tight mt-1" id="totalLossDisplay">
@@ -208,7 +347,7 @@
             </div>
             <div class="text-[11px] text-slate-400 mt-1">Based on a conservative 60% booking close rate.</div>
           </div>
-          <a href="https://buy.stripe.com/8x26oH69LaEAajGe6F2cg01" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-3.5 rounded-xl text-sm transition shadow-md whitespace-nowrap">
+          <a href="https://buy.stripe.com/8x26oH69LaEAajGe6F2cg01" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-7 py-4 rounded-xl text-sm transition shadow-lg shadow-amber-500/20 whitespace-nowrap">
             Plug The Leak Today →
           </a>
         </div>
@@ -218,7 +357,7 @@
 
   <!-- PRICING SECTION -->
   <section id="pricing" class="max-w-4xl mx-auto px-6 py-12 text-center">
-    <div class="max-w-xl mx-auto bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-10 shadow-xl">
+    <div class="max-w-xl mx-auto bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl relative">
       <div class="text-xs font-mono uppercase tracking-wider text-amber-400 font-bold mb-2">
         Simple Turnkey Pricing
       </div>
@@ -227,46 +366,46 @@
       <div class="text-4xl sm:text-5xl font-extrabold text-white my-4">$500 <span class="text-lg font-bold text-amber-400">setup</span> <span class="text-slate-400 text-2xl font-normal">+ $197/mo</span></div>
       
       <p class="text-xs text-slate-300 mb-6">
-        Complete after-hours coverage for Plumbing, HVAC, and Restoration contractors. We configure, train, and connect your dedicated dispatch line in under 24 hours.
+        Complete after-hours coverage for Commercial & Residential Plumbing, HVAC, and Restoration trades. We build, train, and deploy your line in under 24 hours.
       </p>
 
       <div class="space-y-3 text-left border-t border-b border-slate-800 py-6 mb-8 text-xs text-slate-300">
         <div class="flex items-center"><span class="text-amber-400 mr-2.5">✔</span> Dedicated high-speed dispatch line (sub-second natural voice response)</div>
-        <div class="flex items-center"><span class="text-amber-400 mr-2.5">✔</span> Customized to your company name, service area & technician routing rules</div>
+        <div class="flex items-center"><span class="text-amber-400 mr-2.5">✔</span> Custom trained on your company name, service boundaries & technician routing</div>
         <div class="flex items-center"><span class="text-amber-400 mr-2.5">✔</span> Real-time SMS & email dispatches with customer address, name & issue</div>
-        <div class="flex items-center"><span class="text-amber-400 mr-2.5">✔</span> <strong>24-Hour Deployment Guarantee:</strong> Live on your shop line in 24 hours or less</div>
+        <div class="flex items-center"><span class="text-amber-400 mr-2.5">✔</span> <strong>24-Hour Deployment Guarantee:</strong> Live on your line in 24 hours or less</div>
       </div>
 
-      <button onclick="window.location.href='https://buy.stripe.com/8x26oH69LaEAajGe6F2cg01'" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-4 rounded-xl text-sm transition shadow-md">
+      <button onclick="window.location.href='https://buy.stripe.com/8x26oH69LaEAajGe6F2cg01'" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-4 rounded-xl text-base transition shadow-lg shadow-amber-500/25">
         Activate 24/7 Dispatch Line →
       </button>
     </div>
   </section>
 
   <!-- FAQ SECTION -->
-  <section class="max-w-3xl mx-auto px-6 py-12 border-t border-slate-800/80">
-    <h2 class="text-xl font-bold text-white text-center mb-8">Frequently Asked Questions</h2>
+  <section class="max-w-3xl mx-auto px-6 py-14 border-t border-slate-800/80">
+    <h2 class="text-2xl font-bold text-white text-center mb-8">Frequently Asked Questions</h2>
     
     <div class="space-y-4 text-left text-xs">
-      <div class="p-4 bg-slate-900 border border-slate-800 rounded-lg">
-        <h3 class="font-bold text-white mb-1">Do we need to change our existing business phone number?</h3>
+      <div class="p-5 bg-slate-900 border border-slate-800 rounded-xl">
+        <h3 class="font-bold text-white text-sm mb-1">Do we need to change our existing business phone number?</h3>
         <p class="text-slate-400 leading-relaxed">No. You keep your existing business number. You simply set your carrier to conditionally forward after-hours or unanswered calls to your Apex line.</p>
       </div>
 
-      <div class="p-4 bg-slate-900 border border-slate-800 rounded-lg">
-        <h3 class="font-bold text-white mb-1">What if our on-call technician is busy or unavailable?</h3>
+      <div class="p-5 bg-slate-900 border border-slate-800 rounded-xl">
+        <h3 class="font-bold text-white text-sm mb-1">What if our on-call technician is busy or unavailable?</h3>
         <p class="text-slate-400 leading-relaxed">Apex collects the customer details and logs the priority dispatch. Your technician receives the text alert and can either call back immediately or send a quick canned response indicating your next available arrival window.</p>
       </div>
 
-      <div class="p-4 bg-slate-900 border border-slate-800 rounded-lg">
-        <h3 class="font-bold text-white mb-1">How fast does setup take?</h3>
+      <div class="p-5 bg-slate-900 border border-slate-800 rounded-xl">
+        <h3 class="font-bold text-white text-sm mb-1">How fast does setup take?</h3>
         <p class="text-slate-400 leading-relaxed">Once you activate your line, we configure your company parameters and dispatch routing within 24 hours.</p>
       </div>
     </div>
   </section>
 
   <footer class="border-t border-slate-900 py-8 text-center text-xs text-slate-400 font-mono">
-    Apex Dispatch Systems • Dedicated Emergency Ingestion for Trades
+    Apex Dispatch Systems • Dedicated Emergency Ingestion for Commercial & Residential Trades
   </footer>
 
   <script>
@@ -305,7 +444,7 @@
         const osc2 = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
 
-        osc1.frequency.value = 440; // US standard ring tone
+        osc1.frequency.value = 440;
         osc2.frequency.value = 480;
 
         gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
@@ -320,7 +459,7 @@
         osc1.stop(audioCtx.currentTime + 1.6);
         osc2.stop(audioCtx.currentTime + 1.6);
       } catch (e) {
-        console.log('AudioContext not allowed without gesture', e);
+        console.log('AudioContext error', e);
       }
     }
 
@@ -332,18 +471,17 @@
 
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = isDispatcher ? 1.05 : 1.15;
-      utterance.pitch = isDispatcher ? 0.95 : 1.1;
+      utterance.rate = isDispatcher ? 1.02 : 1.12;
+      utterance.pitch = isDispatcher ? 1.05 : 0.95;
 
-      // Select voices if available
       const voices = window.speechSynthesis.getVoices();
       if (voices.length > 0) {
         if (isDispatcher) {
-          const maleVoice = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Male') || v.name.includes('David') || v.name.includes('Alex') || v.name.includes('Daniel')));
-          if (maleVoice) utterance.voice = maleVoice;
-        } else {
-          const femVoice = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Female') || v.name.includes('Samantha') || v.name.includes('Victoria') || v.name.includes('Karen')));
+          const femVoice = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Samantha') || v.name.includes('Victoria') || v.name.includes('Female')));
           if (femVoice) utterance.voice = femVoice;
+        } else {
+          const maleVoice = voices.find(v => v.lang.startsWith('en') && (v.name.includes('David') || v.name.includes('Alex') || v.name.includes('Male')));
+          if (maleVoice) utterance.voice = maleVoice;
         }
       }
 
@@ -362,14 +500,14 @@
       btn.disabled = true;
       btn.classList.add('opacity-50');
       transcript.innerHTML = '';
-      sms.innerHTML = '<span class="text-amber-400 font-mono">Dialing... Connecting to 24/7 on-call dispatcher...</span>';
+      sms.innerHTML = '<span class="text-amber-400 font-mono">Dialing... Connecting to 24/7 on-call dispatcher Emma...</span>';
 
       playPhoneRing();
 
       const script = [
-        { speaker: 'Apex Dispatch', text: "Thank you for calling 24/7 Emergency Dispatch, this is Harry. Are you dealing with active flooding or a heating outage right now?" },
+        { speaker: 'Apex Dispatch', text: "Thanks for calling 24/7 Emergency Services, this is Emma. Tell me what's happening at your property and let's get you some help." },
         { speaker: 'Customer', text: "Help! Our heating unit just died and temperatures outside are freezing!" },
-        { speaker: 'Apex Dispatch', text: "Oh no, I'm so sorry! Don't worry at all, we're going to get an emergency technician dispatched right away. What is your full street address?" },
+        { speaker: 'Apex Dispatch', text: "Oh no, I'm so sorry! Don't worry at all, we're going to get an emergency technician dispatched right away. What is your full address?" },
         { speaker: 'Customer', text: "We're at 812 Westheimer Road, Houston." },
         { speaker: 'Apex Dispatch', text: "Got it, 812 Westheimer Road. And what is your best callback phone number and first name?" },
         { speaker: 'Customer', text: "It's David, number is 713-555-0182." },
@@ -393,7 +531,7 @@
           btn.classList.remove('opacity-50');
           sms.innerHTML = `
             <div class="text-emerald-400 font-bold mb-1">🚨 EMERGENCY DISPATCH ALERT:</div>
-            <div><strong>Customer:</strong> David</div>
+            <div><strong>Customer:</strong> David Sterling</div>
             <div><strong>Phone:</strong> (713) 555-0182</div>
             <div><strong>Address:</strong> 812 Westheimer Rd, Houston</div>
             <div><strong>Emergency:</strong> Furnace / Heat pump outage (Freezing weather)</div>
@@ -407,8 +545,8 @@
 
         const bubble = document.createElement('div');
         bubble.className = isDispatcher 
-          ? 'p-2.5 rounded bg-amber-500/10 border border-amber-500/20 text-xs text-amber-200' 
-          : 'p-2.5 rounded bg-slate-900 border border-slate-800 text-xs text-slate-300';
+          ? 'p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-200' 
+          : 'p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300';
         bubble.innerHTML = `<strong>${item.speaker}:</strong> ${item.text}`;
         transcript.appendChild(bubble);
         transcript.scrollTop = transcript.scrollHeight;
@@ -419,7 +557,6 @@
         });
       }
 
-      // Start after initial ring
       setTimeout(playNextStep, 1800);
     }
   </script>
